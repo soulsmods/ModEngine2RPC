@@ -5,13 +5,19 @@ package modengine;
 service ModEngine2Service {
 
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc GetRuntimeInformation (RuntimeInformationRequest) returns (RuntimeInformationReply) {}
 }
 
-message HelloRequest {
-  string name = 1;
-}
+message RuntimeInformationRequest {}
 
-message HelloReply {
-  string message = 1;
+message RuntimeInformationReply {
+  string version = 1;
+  enum GameType {
+    DS_REMASTERED = 0;
+    DS2 = 1;
+    DS3 = 2;
+    SEKIRO = 3;
+    ELDEN_RING = 4;
+  }
+  GameType gametype = 2;
 }
